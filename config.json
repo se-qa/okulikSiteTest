@@ -1,0 +1,14 @@
+{
+    "chrome_options": {
+        "start_maximized": true,
+        "ignore_certificate_errors": true,
+        "disable_popup_blocking": false,
+        "disable_extensions": true,
+        "incognito": false,
+        "headless": false,
+        "disable_gpu": false,
+        "disable_cache": false,
+        "disable_notifications": false,
+        "disable_autofill": false
+    }
+}

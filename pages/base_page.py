@@ -4,7 +4,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-from tests.data.js_scripts.scripts import js_scroll_to_element, js_click
+from tests.data.js_scripts.scripts import *
 
 
 class BasePage:
@@ -58,11 +58,24 @@ class BasePage:
             js_click(self.driver, element)
 
     # Element State Checking
+    def is_current_url(self, url):
+        return self.driver.current_url == url
+
+    def is_element_enabled(self, locator):
+        return self.find_element(locator).is_enabled()
+
+    def is_element_selected(self, locator):
+        return self.find_element(locator).is_selected()
+
     def is_element_visible(self, locator):
         try:
             return self.find_element(locator).is_displayed()
         except selenium.common.exceptions.NoSuchElementException:
             return False
+
+    def is_element_in_viewport(self, locator):
+        element = self.find_element(locator)
+        return js_is_visible_on_screen(self.driver, element)
 
     # Frame Handling
     def switch_to_frame(self, locator):
@@ -85,6 +98,12 @@ class BasePage:
     def wait_and_click(self, locator, timeout=10):
         element = self.wait_for_element_clickable(locator, timeout)
         element.click()
+
+    def wait_for_scroll_to_element(self, locator, timeout=10):
+        WebDriverWait(self.driver, timeout).until(
+            lambda driver: self.is_element_in_viewport(locator),
+            message=f"Timed out waiting for element {locator} to be in viewport"
+        )
 
     # Utility Functions
     def scroll_to_element(self, locator):

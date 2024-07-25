@@ -9,3 +9,6 @@ button_get_a_practical_assignment = (By.XPATH, '//a[text()="Получить п�
 # anchors
 anchor_learning_process = (By.XPATH, '//a[text()="Процесс обучения"]')
 anchor_join_a_group = (By.XPATH, '//a[text()="группу"]')
+
+# paragraph
+paragraph_study_whenever_you_want = (By.XPATH, '//div[@class="col-lg-6 mx-auto"]/child::p[2]')

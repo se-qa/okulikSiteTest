@@ -14,6 +14,8 @@ PERSON: str = os.getenv('LK_URL')
 RESET: str = os.getenv('RESET_PASS_URL')
 REGISTER: str = os.getenv('REGISTER_URL')
 LOGIN: str = os.getenv('LOGIN_URL')
+FULL_PRICE: str = os.getenv('FULL_PRICE_URL')
+PART_PRICE: str = os.getenv('PART_PRICE_URL')
 
 BASE_DIR: Path = Path(__file__).resolve().parent.parent
 ENV_FILE: Path = BASE_DIR / '.env'

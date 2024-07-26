@@ -77,7 +77,12 @@ def js_scroll_element_to_center_of_screen(driver: WebDriver, element: WebElement
 
 
 def js_scroll_element_to_top_of_screen(driver: WebDriver, element: WebElement) -> None:
-    driver.execute_script("arguments[0].scrollIntoView({block: 'start'});", element)
+    driver.execute_script("""
+        var elementTop = arguments[0].getBoundingClientRect().top;
+        var currentScroll = window.scrollY || document.documentElement.scrollTop;
+        var targetScroll = currentScroll + elementTop - 50;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    """, element)
 
 
 def js_scroll_to_bottom(driver: WebDriver) -> None:

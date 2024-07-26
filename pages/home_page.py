@@ -1,11 +1,10 @@
 from time import sleep
 
-from selenium.webdriver.chrome import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-
 from pages.base_page import BasePage
+
+from selenium.webdriver.chrome import webdriver
+
 from tests.data.selectors.common_selectors import collapse_cards_active
-from selenium.webdriver.support import expected_conditions as ec
 
 
 class HomePage(BasePage):

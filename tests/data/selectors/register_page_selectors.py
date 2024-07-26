@@ -11,6 +11,7 @@ input_confirm_password = (By.XPATH, '//input[@id="id_password2"]')
 # buttons
 button_register = (By.XPATH, '//input[@id="submit-id-submit"]')
 
+# spans
 span_error_username = (By.XPATH, '//span[contains(@id, "username")]')
 span_error_email = (By.XPATH, '//span[contains(@id, "email")]')
 span_error_password = (By.XPATH, '//span[contains(@id, "password")]')

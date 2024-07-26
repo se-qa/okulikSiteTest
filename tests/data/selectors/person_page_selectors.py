@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+# links
 link_main = (By.XPATH, '//ul[@class="nav nav-pills flex-column mb-auto"]/descendant::a[1]')
 link_payment_page = (By.XPATH, '//a[text()="Страница оплаты"]')
 link_payment = (By.XPATH, '//ul[@class="nav nav-pills flex-column mb-auto"]/descendant::a[2]')

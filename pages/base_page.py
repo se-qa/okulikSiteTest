@@ -1,7 +1,6 @@
 import selenium.common.exceptions
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome import webdriver
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -38,24 +37,24 @@ class BasePage:
     def find_elements(self, locator: tuple) -> list[WebElement]:
         return self.driver.find_elements(*locator)
 
-    def click_element(self, locator):
+    def click_element(self, locator: tuple) -> None:
         self.find_element(locator).click()
 
-    def send_keys(self, locator, text):
+    def send_keys(self, locator: tuple, text: str) -> None:
         self.find_element(locator).send_keys(text)
 
-    def get_text(self, locator):
+    def get_text(self, locator: tuple) -> str:
         return self.find_element(locator).text
 
-    def get_attribute(self, locator, attribute):
+    def get_attribute(self, locator: tuple, attribute: str) -> str:
         return self.find_element(locator).get_attribute(attribute)
 
-    def clear_and_send_keys(self, locator, text):
+    def clear_and_send_keys(self, locator: tuple, text: str) -> None:
         element = self.find_element(locator)
         element.clear()
         element.send_keys(text)
 
-    def native_click_except_js_click(self, locator):
+    def native_click_except_js_click(self, locator: tuple) -> None:
         element = self.find_element(locator)
         try:
             element.click()
@@ -63,87 +62,87 @@ class BasePage:
             js_click(self.driver, element)
 
     # Element State Checking
-    def is_current_url(self, url):
+    def is_current_url(self, url: str) -> bool:
         return self.driver.current_url == url
 
-    def is_element_enabled(self, locator):
+    def is_element_enabled(self, locator: tuple) -> bool:
         return self.find_element(locator).is_enabled()
 
-    def is_element_selected(self, locator):
+    def is_element_selected(self, locator: tuple) -> bool:
         return self.find_element(locator).is_selected()
 
-    def is_element_visible(self, locator):
+    def is_element_visible(self, locator: tuple) -> bool:
         try:
             return self.find_element(locator).is_displayed()
         except selenium.common.exceptions.NoSuchElementException:
             return False
 
-    def is_element_in_viewport(self, locator):
+    def is_element_in_viewport(self, locator: tuple) -> bool:
         element = self.find_element(locator)
         return js_is_visible_on_screen(self.driver, element)
 
     # Frame Handling
-    def switch_to_frame(self, locator):
+    def switch_to_frame(self, locator: tuple) -> None:
         frame = self.find_element(locator)
         self.driver.switch_to.frame(frame)
 
-    def switch_to_default_content(self):
+    def switch_to_default_content(self) -> None:
         self.driver.switch_to.default_content()
 
     # Waiting for Conditions
-    def wait_for_element_visible(self, locator, timeout=10):
+    def wait_for_element_visible(self, locator: tuple[str, str], timeout: int = 10) -> WebElement:
         return WebDriverWait(self.driver, timeout).until(ec.visibility_of_element_located(locator))
 
-    def wait_for_element_clickable(self, locator, timeout=10):
+    def wait_for_element_clickable(self, locator: tuple[str, str], timeout: int = 10) -> WebElement:
         return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable(locator))
 
-    def wait_for_element_to_disappear(self, locator, timeout=10):
+    def wait_for_element_to_disappear(self, locator: tuple[str, str], timeout: int = 10) -> None:
         WebDriverWait(self.driver, timeout).until(ec.invisibility_of_element_located(locator))
 
-    def wait_and_click(self, locator, timeout=10):
+    def wait_and_click(self, locator: tuple[str, str], timeout: int = 10) -> None:
         element = self.wait_for_element_clickable(locator, timeout)
         element.click()
 
-    def wait_for_scroll_to_element(self, locator, timeout=10):
+    def wait_for_scroll_to_element(self, locator: tuple, timeout: int = 10) -> None:
         WebDriverWait(self.driver, timeout).until(
             lambda driver: self.is_element_in_viewport(locator),
             message=f"Timed out waiting for element {locator} to be in viewport"
         )
 
     # Utility Functions
-    def scroll_to_element_center_of_screen(self, locator):
+    def scroll_to_element_center_of_screen(self, locator: tuple) -> None:
         element = self.find_element(locator)
         js_scroll_element_to_center_of_screen(self.driver, element)
 
-    def scroll_to_element_top_of_screen(self, locator):
+    def scroll_to_element_top_of_screen(self, locator: tuple) -> None:
         element = self.find_element(locator)
         js_scroll_element_to_top_of_screen(self.driver, element)
 
-    def scroll_to_element(self, locator):
+    def scroll_to_element(self, locator: tuple) -> None:
         element = self.find_element(locator)
         js_scroll_to_element(self.driver, element)
         self.wait_for_scroll_to_element(locator)
 
-    def execute_script(self, script, *args):
+    def execute_script(self, script: str, *args) -> None:
         return self.driver.execute_script(script, *args)
 
-    def select_by_value(self, locator, value):
+    def select_by_value(self, locator: tuple, value: str) -> None:
         select_element = self.find_element(locator)
         select = Select(select_element)
         select.select_by_value(value)
 
-    def select_by_visible_text(self, locator, text):
+    def select_by_visible_text(self, locator: tuple, text: str) -> None:
         select_element = self.find_element(locator)
         select = Select(select_element)
         select.select_by_visible_text(text)
 
-    def hover_over_element(self, locator):
+    def hover_over_element(self, locator: tuple) -> None:
         element = self.find_element(locator)
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
 
-    def take_screenshot(self, filename):
+    def take_screenshot(self, filename: str) -> None:
         self.driver.get_screenshot_as_file(filename)
 
-    def switch_to_new_tab(self):
+    def switch_to_new_tab(self) -> None:
         self.driver.switch_to.window(self.driver.window_handles[-1])

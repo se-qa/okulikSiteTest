@@ -22,12 +22,12 @@ ENV_FILE: Path = BASE_DIR / '.env'
 CONFIG_FILE: Path = BASE_DIR / 'config.json'
 
 
-def load_config():
+def load_config() -> dict:
     with open(CONFIG_FILE, 'r') as file:
         return json.load(file)
 
 
-def get_chrome_options(config):
+def get_chrome_options(config: dict) -> Options:
     options = Options()
     if config.get("start_maximized", False):
         options.add_argument("--start-maximized")

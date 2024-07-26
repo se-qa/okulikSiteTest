@@ -1,5 +1,6 @@
 from time import sleep
 
+from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
@@ -8,10 +9,10 @@ from selenium.webdriver.support import expected_conditions as ec
 
 
 class HomePage(BasePage):
-    def __init__(self, driver):
+    def __init__(self, driver: webdriver) -> None:
         super().__init__(driver)
 
-    def click_all_elements_with_class(self, locator, text):
+    def click_all_elements_with_class(self, locator: tuple, text: str) -> None:
         elements = self.find_elements(locator)
         for element in elements:
             element.click()

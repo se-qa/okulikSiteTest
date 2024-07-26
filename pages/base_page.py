@@ -1,5 +1,7 @@
 import selenium.common.exceptions
 from selenium.webdriver import ActionChains
+from selenium.webdriver.chrome import webdriver
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -8,30 +10,33 @@ from tests.data.js_scripts.scripts import *
 
 
 class BasePage:
-    def __init__(self, driver):
+    def __init__(self, driver: webdriver) -> None:
         self.driver = driver
 
     # Browser Control
-    def open(self, url):
+    def open(self, url: str) -> None:
         self.driver.get(url)
 
-    def open_in_new_tab(self, url):
+    def open_in_new_tab(self, url: str) -> None:
         self.driver.get(url)
         self.switch_to_new_tab()
 
-    def close_current_tab(self):
+    def close_current_tab(self) -> None:
         self.driver.close()
 
-    def close_current_tab_and_switch_back(self):
+    def close_current_tab_and_switch_back(self) -> None:
         self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
-    def quit(self):
+    def quit(self) -> None:
         self.driver.quit()
 
     # Element Interaction
-    def find_element(self, locator):
+    def find_element(self, locator: tuple) -> WebElement:
         return self.driver.find_element(*locator)
+
+    def find_elements(self, locator: tuple) -> list[WebElement]:
+        return self.driver.find_elements(*locator)
 
     def click_element(self, locator):
         self.find_element(locator).click()
@@ -106,10 +111,18 @@ class BasePage:
         )
 
     # Utility Functions
+    def scroll_to_element_center_of_screen(self, locator):
+        element = self.find_element(locator)
+        js_scroll_element_to_center_of_screen(self.driver, element)
+
+    def scroll_to_element_top_of_screen(self, locator):
+        element = self.find_element(locator)
+        js_scroll_element_to_top_of_screen(self.driver, element)
+
     def scroll_to_element(self, locator):
         element = self.find_element(locator)
         js_scroll_to_element(self.driver, element)
-        self.wait_for_element_visible(locator)
+        self.wait_for_scroll_to_element(locator)
 
     def execute_script(self, script, *args):
         return self.driver.execute_script(script, *args)

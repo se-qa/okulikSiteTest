@@ -27,6 +27,8 @@ link_telegram_bottom = (By.XPATH, '(//a[text()="t.me/okulikby"]')
 # collapses
 collapses_block = (By.XPATH, '//h2[contains (text(), "Программирование на Python")]/ancestor::div[4]')
 collapse_cards = (By.XPATH, '//a[@data-bs-toggle="collapse"]')
+collapse_cards_active = (By.XPATH, '//div[contains(@class, "collapse show")]')
+collapse_plus = (By.XPATH, '//*[@style="display: block;"]')
 # collapse_automation_of_backend_testing = (By.XPATH, '//h2[contains (text(), "backend ")]/ancestor::a[1]')
 # collapse_automation_of_ui_testing = (By.XPATH, '//h2[contains (text(), "UI ")]/ancestor::a[1]')
 # collapse_tools = (By.XPATH, '//h2[contains (text(), "Инструменты")]/ancestor::a[1]')

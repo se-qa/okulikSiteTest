@@ -2,7 +2,8 @@ from time import sleep
 
 import pytest
 
-from tests.data.selectors.home_page_selectors import *
+from tests.data.selectors.common_selectors import collapse_cards
+from tests.data.tests_data.parametrize_home_page import *
 from utils.client import URL
 
 
@@ -51,3 +52,18 @@ def test_other_links_click(driver, home_page, link, target, url):
     home_page.wait_for_element_visible(target)
     assert home_page.is_current_url(url)
     assert home_page.is_element_visible(target)
+
+
+def test_anchor_learning_process_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element(anchor_learning_process)
+    home_page.click_element(anchor_learning_process)
+    home_page.wait_for_scroll_to_element(title_learning_process)
+    assert home_page.is_element_in_viewport(title_learning_process)
+
+
+def test_collapse_cards_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element_top_of_screen(collapse_cards)
+    home_page.wait_for_scroll_to_element(collapse_cards)
+    home_page.click_all_elements_with_class(collapse_cards, "collapsed")

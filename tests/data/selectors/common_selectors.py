@@ -7,6 +7,19 @@ buttons_carousel = (By.XPATH, '//button[@data-bs-target="#carouselExampleIndicat
 button_carousel_previous = (By.XPATH, '//button[@class="carousel-control-prev"]')
 button_carousel_next = (By.XPATH, '//button[@class="carousel-control-next"]')
 
+# divs
+div_carousel = (By.XPATH, '//div[@id="carouselExampleIndicators"]')
+
+# imgs
+img_carousel_items = (By.XPATH, '//img[@class="img-circle"]')
+img_carousel_item_1 = (By.XPATH, '(//img[@class="img-circle"])[1]')
+img_carousel_item_2 = (By.XPATH, '(//img[@class="img-circle"])[2]')
+img_carousel_item_4 = (By.XPATH, '(//img[@class="img-circle"])[4]')
+img_carousel_item_7 = (By.XPATH, '(//img[@class="img-circle"])[7]')
+
+# paragraphs
+paragraph_carousel_items = (By.XPATH, '//p[@class="lead review"]')
+
 # links
 link_about_me_youtube = (By.XPATH, '//a[@class="mylink" and text()="Senior Tester"]')
 

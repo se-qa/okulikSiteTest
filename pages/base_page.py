@@ -77,7 +77,7 @@ class BasePage:
         except selenium.common.exceptions.NoSuchElementException:
             return False
 
-    def is_element_not_visible(self, locator):
+    def is_element_not_visible(self, locator: tuple) -> bool:
         try:
             return not self.find_element(locator).is_displayed()
         except selenium.common.exceptions.NoSuchElementException:
@@ -86,6 +86,10 @@ class BasePage:
     def is_element_in_viewport(self, locator: tuple) -> bool:
         element = self.find_element(locator)
         return js_is_visible_on_screen(self.driver, element)
+
+    @staticmethod
+    def is_length_of_elements(elements: list[WebElement], length: int) -> bool:
+        return len(elements) == length
 
     # Frame Handling
     def switch_to_frame(self, locator: tuple) -> None:
@@ -96,8 +100,11 @@ class BasePage:
         self.driver.switch_to.default_content()
 
     # Waiting for Conditions
-    def wait_for_element_visible(self, locator: tuple[str, str], timeout: int = 10) -> WebElement:
+    def wait_for_element_visible_by_locator(self, locator: tuple[str, str], timeout: int = 10) -> WebElement:
         return WebDriverWait(self.driver, timeout).until(ec.visibility_of_element_located(locator))
+
+    def wait_for_element_visible_by_element(self, element: WebElement, timeout: int = 10) -> WebElement:
+        return WebDriverWait(self.driver, timeout).until(ec.visibility_of(element))
 
     def wait_for_element_clickable(self, locator: tuple[str, str], timeout: int = 10) -> WebElement:
         return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable(locator))

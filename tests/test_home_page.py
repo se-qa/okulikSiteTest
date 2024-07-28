@@ -2,7 +2,8 @@ from time import sleep
 
 import pytest
 
-from tests.data.selectors.common_selectors import collapse_cards
+from tests.data.selectors.common_selectors import collapse_cards, div_carousel, button_carousel_previous, \
+    img_carousel_item_7, button_carousel_next, img_carousel_item_2, buttons_carousel
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
@@ -42,7 +43,7 @@ def test_top_anchor_click(driver, home_page, anchor, target):
 def test_buy_course_links_click(driver, home_page, link, target, url):
     home_page.open(URL)
     home_page.click_element(link)
-    home_page.wait_for_element_visible(target)
+    home_page.wait_for_element_visible_by_locator(target)
     assert home_page.is_current_url(url)
     assert home_page.is_element_visible(target)
 
@@ -52,7 +53,7 @@ def test_other_links_click(driver, home_page, link, target, url):
     home_page.open(URL)
     home_page.scroll_to_element(link)
     home_page.click_element(link)
-    home_page.wait_for_element_visible(target)
+    home_page.wait_for_element_visible_by_locator(target)
     assert home_page.is_current_url(url)
     assert home_page.is_element_visible(target)
 
@@ -69,7 +70,7 @@ def test_collapse_cards_click(driver, home_page):
     home_page.open(URL)
     home_page.scroll_to_element_top_of_screen(collapse_cards)
     home_page.wait_for_scroll_to_element(collapse_cards)
-    home_page.click_all_elements_with_class(collapse_cards, "collapsed")
+    home_page.click_all_collapse_elements_with_class(collapse_cards, "collapsed")
 
 
 def test_button_sign_up_right_group_click(driver, home_page):
@@ -98,7 +99,7 @@ def test_button_pay_first_step_click(driver, home_page):
     home_page.scroll_to_element(button_pay_first_step)
     home_page.wait_for_scroll_to_element(button_pay_first_step)
     home_page.click_element(button_pay_first_step)
-    home_page.wait_for_element_visible(title_part_price)
+    home_page.wait_for_element_visible_by_locator(title_part_price)
     assert home_page.is_current_url(PART_PRICE)
     assert home_page.is_element_in_viewport(title_part_price)
 
@@ -111,7 +112,7 @@ def test_button_pay_entirely_click(driver, home_page):
     home_page.scroll_to_element(button_pay_entirely)
     home_page.wait_for_scroll_to_element(button_pay_entirely)
     home_page.click_element(button_pay_entirely)
-    home_page.wait_for_element_visible(title_full_price)
+    home_page.wait_for_element_visible_by_locator(title_full_price)
     assert home_page.is_current_url(FULL_PRICE)
     assert home_page.is_element_in_viewport(title_full_price)
 
@@ -121,6 +122,31 @@ def test_button_get_practical_task_click(driver, home_page):
     home_page.scroll_to_element(button_get_a_practical_task)
     home_page.wait_for_scroll_to_element(button_get_a_practical_task)
     home_page.click_element(button_get_a_practical_task)
-    home_page.wait_for_element_visible(title_practical_task)
+    home_page.wait_for_element_visible_by_locator(title_practical_task)
     assert home_page.is_current_url(PRACTICAL_TASK)
     assert home_page.is_element_in_viewport(title_practical_task)
+
+
+def test_carousel_previous_button_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element_top_of_screen(div_carousel)
+    home_page.wait_for_scroll_to_element(div_carousel)
+    home_page.click_element(button_carousel_previous)
+    home_page.wait_for_element_visible_by_locator(img_carousel_item_7)
+    assert home_page.is_element_in_viewport(img_carousel_item_7)
+
+
+def test_carousel_next_button_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element_top_of_screen(div_carousel)
+    home_page.wait_for_scroll_to_element(div_carousel)
+    home_page.click_element(button_carousel_next)
+    home_page.wait_for_element_visible_by_locator(img_carousel_item_2)
+    assert home_page.is_element_in_viewport(img_carousel_item_2)
+
+
+def test_click_all_carousel_pages(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element_top_of_screen(div_carousel)
+    home_page.wait_for_scroll_to_element(div_carousel)
+    home_page.click_all_carousel_elements(buttons_carousel)

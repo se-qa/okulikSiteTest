@@ -16,6 +16,7 @@ REGISTER: str = os.getenv('REGISTER_URL')
 LOGIN: str = os.getenv('LOGIN_URL')
 FULL_PRICE: str = os.getenv('FULL_PRICE_URL')
 PART_PRICE: str = os.getenv('PART_PRICE_URL')
+PRACTICAL_TASK: str = os.getenv('PRACTICAL_TASK_URL')
 
 BASE_DIR: Path = Path(__file__).resolve().parent.parent
 ENV_FILE: Path = BASE_DIR / '.env'

@@ -2,9 +2,9 @@ from selenium.webdriver.common.by import By
 
 # buttons
 button_sign_up_top = (By.XPATH, '//a[text()="Запишись в ближайшую группу"]')
-button_sign_up_middle = (By.XPATH, '//a[text()="Запишись в нужную группу"]')
+button_sign_up_right_group = (By.XPATH, '//a[text()="Запишись в нужную группу"]')
 button_sign_up = (By.XPATH, '//input[@class="btn btn-primary w-100 btn-lg"]')
-button_get_a_practical_assignment = (By.XPATH, '//a[text()="Получить практическое задание"]')
+button_get_a_practical_task = (By.XPATH, '//a[text()="Получить практическое задание"]')
 button_pay_first_step = (By.XPATH, '//a[text()="Оплатить первый этап"]')
 button_pay_entirely = (By.XPATH, '//a[text()="Оплатить целиком"]')
 
@@ -35,9 +35,15 @@ title_course_program = (By.XPATH, '//h1[text()="Программа курса"]'
 title_start_group = (By.XPATH, '//h1[text()="Старт группы"]')
 title_price = (By.XPATH, '//h1[text()="Цены"]')
 title_learning_process = (By.XPATH, '//h1[text()="Процесс обучения"]')
+title_staged_payment = (By.XPATH, '//h4[@class="my-0 fw-normal" and text()="Поэтапная оплата"]')
+title_payment_whole_course = (By.XPATH, '//h4[@class="my-0 fw-normal" and contains (text(), "Оплата за весь")]')
 
 # inputs
 input_full_name = (By.XPATH, '//input[@placeholder="Как тебя зовут?"]')
 input_email = (By.XPATH, '//input[@placeholder="user@mail.com"]]')
 input_contact = (By.XPATH, '//input[contains(@placeholder,"Например")]')
 input_comment = (By.XPATH, '//textarea[contains(@placeholder, "дополнительные сведения")]')
+
+# switchers
+switcher_stages = (By.XPATH, '//label[@for="stages"]')
+switcher_entire_amount = (By.XPATH, '//label[@for="full"]')

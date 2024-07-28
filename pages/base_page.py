@@ -77,6 +77,12 @@ class BasePage:
         except selenium.common.exceptions.NoSuchElementException:
             return False
 
+    def is_element_not_visible(self, locator):
+        try:
+            return not self.find_element(locator).is_displayed()
+        except selenium.common.exceptions.NoSuchElementException:
+            return True
+
     def is_element_in_viewport(self, locator: tuple) -> bool:
         element = self.find_element(locator)
         return js_is_visible_on_screen(self.driver, element)

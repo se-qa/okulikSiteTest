@@ -3,8 +3,11 @@ from time import sleep
 import pytest
 
 from tests.data.selectors.common_selectors import collapse_cards
+from tests.data.selectors.full_price_page_selectors import title_full_price
+from tests.data.selectors.part_price_page_selectors import title_part_price
+from tests.data.selectors.practical_task_page_selectors import title_practical_task
 from tests.data.tests_data.parametrize_home_page import *
-from utils.client import URL
+from utils.client import URL, PRACTICAL_TASK
 
 
 def test_home_page(driver, home_page):
@@ -67,3 +70,57 @@ def test_collapse_cards_click(driver, home_page):
     home_page.scroll_to_element_top_of_screen(collapse_cards)
     home_page.wait_for_scroll_to_element(collapse_cards)
     home_page.click_all_elements_with_class(collapse_cards, "collapsed")
+
+
+def test_button_sign_up_right_group_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element(button_sign_up_right_group)
+    home_page.wait_for_scroll_to_element(button_sign_up_right_group)
+    home_page.click_element(button_sign_up_right_group)
+    home_page.wait_for_scroll_to_element(title_booking)
+    assert home_page.is_element_in_viewport(title_booking)
+
+
+def test_switchers_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element(switcher_stages)
+    home_page.wait_for_scroll_to_element(switcher_stages)
+    assert home_page.is_element_visible(title_staged_payment)
+    home_page.click_element(switcher_entire_amount)
+    assert home_page.is_element_visible(title_payment_whole_course)
+    home_page.click_element(switcher_stages)
+    assert home_page.is_element_not_visible(title_payment_whole_course)
+    assert home_page.is_element_visible(title_staged_payment)
+
+
+def test_button_pay_first_step_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element(button_pay_first_step)
+    home_page.wait_for_scroll_to_element(button_pay_first_step)
+    home_page.click_element(button_pay_first_step)
+    home_page.wait_for_element_visible(title_part_price)
+    assert home_page.is_current_url(PART_PRICE)
+    assert home_page.is_element_in_viewport(title_part_price)
+
+
+def test_button_pay_entirely_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element(switcher_entire_amount)
+    home_page.wait_for_scroll_to_element(switcher_entire_amount)
+    home_page.click_element(switcher_entire_amount)
+    home_page.scroll_to_element(button_pay_entirely)
+    home_page.wait_for_scroll_to_element(button_pay_entirely)
+    home_page.click_element(button_pay_entirely)
+    home_page.wait_for_element_visible(title_full_price)
+    assert home_page.is_current_url(FULL_PRICE)
+    assert home_page.is_element_in_viewport(title_full_price)
+
+
+def test_button_get_practical_task_click(driver, home_page):
+    home_page.open(URL)
+    home_page.scroll_to_element(button_get_a_practical_task)
+    home_page.wait_for_scroll_to_element(button_get_a_practical_task)
+    home_page.click_element(button_get_a_practical_task)
+    home_page.wait_for_element_visible(title_practical_task)
+    assert home_page.is_current_url(PRACTICAL_TASK)
+    assert home_page.is_element_in_viewport(title_practical_task)

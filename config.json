@@ -9,6 +9,7 @@
         "disable_gpu": false,
         "disable_cache": false,
         "disable_notifications": false,
-        "disable_autofill": false
+        "disable_autofill": false,
+        "custom_args": []
     }
 }

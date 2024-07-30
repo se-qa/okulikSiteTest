@@ -28,26 +28,34 @@ def load_config() -> dict:
         return json.load(file)
 
 
+def add_argument_if_present(options: Options, config: dict, key: str, argument: str) -> None:
+    if config.get(key, False):
+        options.add_argument(argument)
+        print(f"Added argument: {argument}")
+
+
 def get_chrome_options(config: dict) -> Options:
     options = Options()
-    if config.get("start_maximized", False):
-        options.add_argument("--start-maximized")
-    if config.get("ignore_certificate_errors", False):
-        options.add_argument("--ignore-certificate-errors")
-    if config.get("disable_popup_blocking", False):
-        options.add_argument("--disable-popup-blocking")
-    if config.get("disable_extensions", False):
-        options.add_argument("--disable-extensions")
-    if config.get("incognito", False):
-        options.add_argument("--incognito")
-    if config.get("headless", False):
-        options.add_argument("--headless")
-    if config.get("disable_gpu", False):
-        options.add_argument("--disable-gpu")
-    if config.get("disable_cache", False):
-        options.add_argument("--disable-cache")
-    if config.get("disable_notifications", False):
-        options.add_argument("--disable-notifications")
-    if config.get("disable_autofill", False):
-        options.add_argument("--disable-autofill")
+
+    argument_mappings = {
+        "start_maximized": "--start-maximized",
+        "ignore_certificate_errors": "--ignore-certificate-errors",
+        "disable_popup_blocking": "--disable-popup-blocking",
+        "disable_extensions": "--disable-extensions",
+        "incognito": "--incognito",
+        "headless": "--headless",
+        "disable_gpu": "--disable-gpu",
+        "disable_cache": "--disable-cache",
+        "disable_notifications": "--disable-notifications",
+        "disable_autofill": "--disable-autofill"
+    }
+
+    for key, argument in argument_mappings.items():
+        add_argument_if_present(options, config, key, argument)
+
+    custom_args = config.get("custom_args", [])
+    for arg in custom_args:
+        options.add_argument(arg)
+        print(f"Added custom argument: {arg}")
+
     return options

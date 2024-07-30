@@ -12,10 +12,10 @@ from utils.client import load_config, get_chrome_options, URL, VIDEO, PERSON, LO
 
 
 @pytest.fixture
-def driver() -> webdriver:
+def driver() -> webdriver.Chrome:
     config: dict = load_config()
     options: Options = get_chrome_options(config["chrome_options"])
-    driver: webdriver = webdriver.Chrome(options=options)
+    driver: webdriver.Chrome = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)
     yield driver
     driver.quit()

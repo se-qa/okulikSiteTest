@@ -140,7 +140,7 @@ def js_get_element_size(driver: WebDriver, element: WebElement) -> dict:
 
 def js_deselect_text(driver: WebDriver) -> None:
     driver.execute_script(
-        "if (window.getSelection) {window.getSelection().removeAllRanges();} "
+        "if (window.getSelection) {var sel = window.getSelection(); if (sel.rangeCount > 0) sel.removeAllRanges();} "
         "else if (document.selection) {document.selection.empty();}"
     )
 

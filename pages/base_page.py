@@ -111,6 +111,11 @@ class BasePage:
         """Check if the number of elements matches the expected length"""
         return len(elements) == length
 
+    def is_element_text_contains_expected_text(self, locator: tuple, text: str) -> bool:
+        """Check if the text of an element specified by the locator contains the specified text"""
+        element = self.find_element(locator)
+        return text in element.text
+
     # Frame Handling
     def switch_to_frame(self, locator: tuple) -> None:
         """Switch to the frame specified by the locator"""

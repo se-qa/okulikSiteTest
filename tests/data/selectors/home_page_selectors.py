@@ -40,10 +40,13 @@ title_payment_whole_course = (By.XPATH, '//h4[@class="my-0 fw-normal" and contai
 
 # inputs
 input_full_name = (By.XPATH, '//input[@placeholder="Как тебя зовут?"]')
-input_email = (By.XPATH, '//input[@placeholder="user@mail.com"]]')
+input_email = (By.XPATH, '//input[@placeholder="user@mail.com"]')
 input_contact = (By.XPATH, '//input[contains(@placeholder,"Например")]')
 input_comment = (By.XPATH, '//textarea[contains(@placeholder, "дополнительные сведения")]')
 
 # switchers
 switcher_stages = (By.XPATH, '//label[@for="stages"]')
 switcher_entire_amount = (By.XPATH, '//label[@for="full"]')
+
+# paragraphs
+paragraph_successful_alert = (By.XPATH, '(//*[@class="alert alert-success"]/p[contains(text(), "Привет")])[1]')

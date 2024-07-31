@@ -3,7 +3,7 @@ from time import sleep
 import pytest
 
 from tests.data.selectors.common_selectors import collapse_cards, div_carousel, button_carousel_previous, \
-    img_carousel_item_7, button_carousel_next, img_carousel_item_2, buttons_carousel
+    img_carousel_item_7, button_carousel_next, img_carousel_item_2, buttons_carousel, button_open_chat, opened_chat
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
@@ -134,3 +134,24 @@ def test_click_all_carousel_pages(home_page):
     home_page.scroll_to_element_top_of_screen(div_carousel)
     home_page.wait_for_scroll_to_element(div_carousel)
     home_page.click_all_carousel_elements(buttons_carousel)
+
+
+def test_click_button_open_chat(home_page):
+    home_page.scroll_to_element(button_open_chat)
+    home_page.wait_for_scroll_to_element(button_open_chat)
+    home_page.click_element(button_open_chat)
+    home_page.wait_for_element_visible_by_locator(opened_chat)
+    assert home_page.is_element_visible(opened_chat)
+
+
+def test_booking_form_submit(home_page):
+    home_page.scroll_to_element_top_of_screen(title_booking)
+    home_page.wait_for_scroll_to_element(title_booking)
+    home_page.send_keys(input_full_name, "Evgeny")
+    home_page.send_keys(input_email, "test@test.com")
+    home_page.send_keys(input_contact, "any text")
+    home_page.send_keys(input_comment, "some text")
+    home_page.click_element(button_sign_up)
+    home_page.wait_for_element_visible_by_locator(paragraph_successful_alert)
+    assert home_page.is_element_visible(paragraph_successful_alert)
+    assert home_page.is_element_text_contains_expected_text(paragraph_successful_alert, "Evgeny")

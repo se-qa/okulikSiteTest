@@ -16,6 +16,8 @@ def pytest_addoption(parser):
     parser.addoption("--incognito", action="store_true", default=False, help="Run tests in incognito mode")
     parser.addoption("--headless", action="store_true", default=False, help="Run tests in headless mode")
     parser.addoption("--disable-cache", action="store_true", default=False, help="Disable browser cache")
+    parser.addoption("--disable-notifications", action="store_true", default=False,
+                     help="Disable browser notifications")
 
 
 @pytest.fixture

@@ -2,7 +2,8 @@
 options_map = {
         "incognito": "--incognito",
         "headless": "--headless",
-        "disable-cache": "--disable-cache"
+        "disable-cache": "--disable-cache",
+        "disable-notifications": "--disable-notifications"
     }
 
 # Default setting for chrome settings from config.ini

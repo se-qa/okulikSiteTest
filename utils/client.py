@@ -4,7 +4,10 @@ import json
 from pathlib import Path
 
 from dotenv import load_dotenv
+
 from selenium.webdriver.chrome.options import Options
+
+from utils.browser_options import argument_mappings
 
 load_dotenv()
 
@@ -36,19 +39,6 @@ def add_argument_if_present(options: Options, config: dict, key: str, argument: 
 
 def get_chrome_options(config: dict) -> Options:
     options = Options()
-
-    argument_mappings = {
-        "start_maximized": "--start-maximized",
-        "ignore_certificate_errors": "--ignore-certificate-errors",
-        "disable_popup_blocking": "--disable-popup-blocking",
-        "disable_extensions": "--disable-extensions",
-        "incognito": "--incognito",
-        "headless": "--headless",
-        "disable_gpu": "--disable-gpu",
-        "disable_cache": "--disable-cache",
-        "disable_notifications": "--disable-notifications",
-        "disable_autofill": "--disable-autofill"
-    }
 
     for key, argument in argument_mappings.items():
         add_argument_if_present(options, config, key, argument)

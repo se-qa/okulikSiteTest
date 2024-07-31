@@ -1,7 +1,8 @@
 from tests.data.selectors.common_selectors import div_carousel, button_carousel_previous, img_carousel_item_7, \
     button_carousel_next, img_carousel_item_2, buttons_carousel, button_open_chat, opened_chat, collapse_cards, \
-    anchor_learning_process
+    anchor_learning_process, link_about_me_youtube
 from tests.data.selectors.home_page_selectors import button_sign_up_top
+from tests.data.selectors.outdoor_page_selectors import youtube_channel_title
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
 from tests.data.selectors.video_page_selectors import *
 from tests.data.selectors.video_with_dz_page_selectors import title_access_to_video_dz_course
@@ -26,6 +27,13 @@ def test_anchor_learning_process_click(video_page):
     video_page.click_element(anchor_learning_process)
     video_page.wait_for_scroll_to_element(anchor_learning_process)
     assert video_page.is_element_in_viewport(anchor_learning_process)
+
+
+def test_link_about_me_youtube_click(video_page):
+    video_page.scroll_to_element(link_about_me_youtube)
+    video_page.click_element(link_about_me_youtube)
+    video_page.wait_for_element_visible_by_locator(youtube_channel_title)
+    assert video_page.is_element_in_viewport(youtube_channel_title)
 
 
 def test_link_join_a_group_click(video_page):

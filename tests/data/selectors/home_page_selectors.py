@@ -25,7 +25,6 @@ anchor_course_program = (By.XPATH, '//a[text()="Программа курса"]'
 anchor_nearest_course = (By.XPATH, '//a[text()="Ближайший курс"]')  # Target is title_start_group
 anchor_price = (By.XPATH, '//a[text()="Цены"]')  # Target is title_price
 anchor_booking = (By.XPATH, '//a[text()="Забронировать"]')  # Target is title_booking
-anchor_learning_process = (By.XPATH, '//a[text()="Процесс обучения"]')  # Target is title_learning_process
 
 # titles
 title_what_is_in_the_end = (By.XPATH, '//h1[contains (text(), "Что в итоге")]')

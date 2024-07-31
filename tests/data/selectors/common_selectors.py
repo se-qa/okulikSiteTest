@@ -20,6 +20,9 @@ img_carousel_item_7 = (By.XPATH, '(//img[@class="img-circle"])[7]')
 # paragraphs
 paragraph_carousel_items = (By.XPATH, '//p[@class="lead review"]')
 
+# anchors
+anchor_learning_process = (By.XPATH, '//a[text()="Процесс обучения"]')
+
 # links
 link_about_me_youtube = (By.XPATH, '//a[@class="mylink" and text()="Senior Tester"]')
 

@@ -1,9 +1,8 @@
-from time import sleep
-
 import pytest
 
 from tests.data.selectors.common_selectors import collapse_cards, div_carousel, button_carousel_previous, \
-    img_carousel_item_7, button_carousel_next, img_carousel_item_2, buttons_carousel, button_open_chat, opened_chat
+    img_carousel_item_7, button_carousel_next, img_carousel_item_2, buttons_carousel, button_open_chat, opened_chat, \
+    anchor_learning_process
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
@@ -11,8 +10,9 @@ from tests.data.tests_data.parametrize_home_page import *
 from utils.client import URL, PRACTICAL_TASK
 
 
-def test_home_page(home_page):
+def test_home_page_open(home_page):
     assert home_page.is_current_url(URL)
+    home_page.wait_for_element_visible_by_locator(link_logo)
     assert home_page.is_element_visible(link_logo)
 
 
@@ -62,7 +62,7 @@ def test_anchor_learning_process_click(home_page):
 def test_collapse_cards_click(home_page):
     home_page.scroll_to_element_top_of_screen(collapse_cards)
     home_page.wait_for_scroll_to_element(collapse_cards)
-    home_page.click_all_collapse_elements_with_class(collapse_cards, "collapsed")
+    home_page.click_all_collapse_elements(collapse_cards, "collapsed")
 
 
 def test_button_sign_up_right_group_click(home_page):
@@ -130,13 +130,13 @@ def test_carousel_next_button_click(home_page):
     assert home_page.is_element_in_viewport(img_carousel_item_2)
 
 
-def test_click_all_carousel_pages(home_page):
+def test_all_carousel_pages_click(home_page):
     home_page.scroll_to_element_top_of_screen(div_carousel)
     home_page.wait_for_scroll_to_element(div_carousel)
     home_page.click_all_carousel_elements(buttons_carousel)
 
 
-def test_click_button_open_chat(home_page):
+def test_button_open_chat_click(home_page):
     home_page.scroll_to_element(button_open_chat)
     home_page.wait_for_scroll_to_element(button_open_chat)
     home_page.click_element(button_open_chat)

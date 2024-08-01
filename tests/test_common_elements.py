@@ -3,9 +3,17 @@ import pytest
 from utils.client import PRACTICAL_TASK
 
 from tests.data.selectors.common_selectors import *
-from tests.data.selectors.home_page_selectors import button_get_a_practical_task
+from tests.data.selectors.home_page_selectors import button_get_a_practical_task, button_sign_up_top
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
 from tests.data.tests_data.parametrize_home_page import class_pages_list_ids, class_pages_list
+
+
+@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
+def test_anchor_learning_process_click(testing_page):
+    testing_page.scroll_to_element(anchor_learning_process)
+    testing_page.click_element(anchor_learning_process)
+    testing_page.wait_for_scroll_to_element(title_learning_process)
+    assert testing_page.is_element_in_viewport(title_learning_process)
 
 
 @pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
@@ -50,3 +58,30 @@ def test_button_open_chat_click(testing_page):
     testing_page.click_element(button_open_chat)
     testing_page.wait_for_element_visible_by_locator(opened_chat)
     assert testing_page.is_element_visible(opened_chat)
+
+
+@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
+def test_link_copyright_click(testing_page):
+    testing_page.scroll_to_element(link_copyright)
+    testing_page.wait_for_scroll_to_element(link_copyright)
+    testing_page.click_element(link_copyright)
+    testing_page.wait_for_element_visible_by_locator(button_sign_up_top)
+    assert testing_page.is_element_visible(button_sign_up_top)
+
+
+@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
+def test_link_payment_rules_click(testing_page):
+    testing_page.scroll_to_element(link_payment_rules)
+    testing_page.wait_for_scroll_to_element(link_payment_rules)
+    testing_page.click_element(link_payment_rules)
+    testing_page.wait_for_element_visible_by_locator(div_payment_rules)
+    assert testing_page.is_element_visible(div_payment_rules)
+
+
+@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
+def test_link_offer_click(testing_page):
+    testing_page.scroll_to_element(link_offer)
+    testing_page.wait_for_scroll_to_element(link_offer)
+    testing_page.click_element(link_offer)
+    testing_page.wait_for_element_visible_by_locator(title_offer)
+    assert testing_page.is_element_visible(title_offer)

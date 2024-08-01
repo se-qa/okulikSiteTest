@@ -5,7 +5,8 @@ from tests.data.selectors.home_page_selectors import button_sign_up_top
 from tests.data.selectors.outdoor_page_selectors import youtube_channel_title
 from tests.data.selectors.video_with_dz_page_selectors import title_access_to_video_dz_course
 from tests.data.selectors.video_without_dz_page_selectors import title_access_to_video_no_dz_course
-from tests.data.selectors.common_selectors import collapse_cards, anchor_learning_process, link_about_me_youtube
+from tests.data.selectors.common_selectors import collapse_cards, anchor_learning_process, link_about_me_youtube, \
+    title_learning_process
 
 
 def test_video_page_open(video_page):
@@ -18,13 +19,6 @@ def test_button_get_access_click(video_page):
     video_page.click_element(button_get_access)
     video_page.wait_for_scroll_to_element(title_price)
     assert video_page.is_element_visible(title_price)
-
-
-def test_anchor_learning_process_click(video_page):
-    video_page.scroll_to_element(anchor_learning_process)
-    video_page.click_element(anchor_learning_process)
-    video_page.wait_for_scroll_to_element(anchor_learning_process)
-    assert video_page.is_element_in_viewport(anchor_learning_process)
 
 
 def test_link_about_me_youtube_click(video_page):

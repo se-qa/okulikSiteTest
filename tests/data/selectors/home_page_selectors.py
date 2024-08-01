@@ -33,7 +33,6 @@ title_any_questions = (By.XPATH, '//h1[text()="Остались вопросы?"
 title_course_program = (By.XPATH, '//h1[text()="Программа курса"]')
 title_start_group = (By.XPATH, '//h1[text()="Старт группы"]')
 title_price = (By.XPATH, '//h1[text()="Цены"]')
-title_learning_process = (By.XPATH, '//h1[text()="Процесс обучения"]')
 title_staged_payment = (By.XPATH, '//h4[@class="my-0 fw-normal" and text()="Поэтапная оплата"]')
 title_payment_whole_course = (By.XPATH, '//h4[@class="my-0 fw-normal" and contains (text(), "Оплата за весь")]')
 

@@ -6,7 +6,7 @@ from tests.data.tests_data.parametrize_home_page import *
 
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
-from tests.data.selectors.common_selectors import collapse_cards, anchor_learning_process
+from tests.data.selectors.common_selectors import collapse_cards, anchor_learning_process, title_learning_process
 
 
 def test_home_page_open(home_page):
@@ -49,13 +49,6 @@ def test_other_links_click(home_page, link, target, url):
     home_page.wait_for_element_visible_by_locator(target)
     assert home_page.is_current_url(url)
     assert home_page.is_element_visible(target)
-
-
-def test_anchor_learning_process_click(home_page):
-    home_page.scroll_to_element(anchor_learning_process)
-    home_page.click_element(anchor_learning_process)
-    home_page.wait_for_scroll_to_element(title_learning_process)
-    assert home_page.is_element_in_viewport(title_learning_process)
 
 
 def test_collapse_cards_click(home_page):

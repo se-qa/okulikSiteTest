@@ -10,6 +10,7 @@ button_carousel_next = (By.XPATH, '//button[@class="carousel-control-next"]')
 # divs
 div_carousel = (By.XPATH, '//div[@id="carouselExampleIndicators"]')
 div_first_element_in_collapse_card = (By.XPATH, '(//*[@class="col d-flex align-items-start bon"])[1]')
+div_payment_rules = (By.XPATH, '//div[@class="container  px-4 py-5"]')
 
 # imgs
 img_carousel_items = (By.XPATH, '//img[@class="img-circle"]')
@@ -20,6 +21,10 @@ img_carousel_item_7 = (By.XPATH, '(//img[@class="img-circle"])[7]')
 
 # paragraphs
 paragraph_carousel_items = (By.XPATH, '//p[@class="lead review"]')
+
+# titles
+title_learning_process = (By.XPATH, '//h1[text()="Процесс обучения"]')
+title_offer = (By.XPATH, '//h2[text()="ПУБЛИЧНАЯ ОФЕРТА"]')
 
 # anchors
 anchor_learning_process = (By.XPATH, '//a[text()="Процесс обучения"]')
@@ -36,7 +41,7 @@ link_telegram_bottom_icon = (By.XPATH, '(//*[@class="bi bi-telegram"])[2]/parent
 link_youtube_top_icon = (By.XPATH, '(//*[@class="bi bi-youtube"])[1]/parent::*')
 link_youtube_bottom_icon = (By.XPATH, '(//*[@class="bi bi-youtube"])[2]/parent::*')
 
-link_copyright = (By.XPATH, '(//a[text()="www.okulik.by"]')
+link_copyright = (By.XPATH, '//a[text()="www.okulik.by"]')
 link_payment_rules = (By.XPATH, '//a[contains(text(), "Правила оплаты")]')
 link_offer = (By.XPATH, '//a[contains(text(), "оферты")]')
 link_telegram_bottom = (By.XPATH, '(//a[text()="t.me/okulikby"]')

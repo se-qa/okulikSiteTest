@@ -1,8 +1,9 @@
-from tests.data.selectors import part_price_page_selectors, full_price_page_selectors, video_page_selectors, \
-    outdoor_page_selectors
+from utils.client import FULL_PRICE, PART_PRICE, VIDEO
+
 from tests.data.selectors.home_page_selectors import *
 from tests.data.selectors.common_selectors import link_about_me_youtube
-from utils.client import FULL_PRICE, PART_PRICE, VIDEO
+from tests.data.selectors import part_price_page_selectors, full_price_page_selectors, video_page_selectors, \
+    outdoor_page_selectors
 
 anchors_top_list = [
     (anchor_course_program, title_course_program),
@@ -40,3 +41,13 @@ other_links_list_ids = ["Senior Tester",
                         "Video price middle",
                         "telegram"
                         ]
+
+class_pages_list = [
+    "home_page",
+    "video_page"
+]
+
+class_pages_list_ids = [
+    "home page",
+    "video page"
+]

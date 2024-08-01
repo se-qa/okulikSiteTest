@@ -1,6 +1,6 @@
-from selenium.webdriver.chrome import webdriver
-
 from pages.base_page import BasePage
+
+from selenium.webdriver.chrome import webdriver
 
 
 class RegisterPage(BasePage):

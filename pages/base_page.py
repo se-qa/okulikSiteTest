@@ -6,9 +6,9 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-from tests.data.js_scripts.scripts_element_interaction import *
 from tests.data.js_scripts.scripts_page_interaction import *
 from tests.data.js_scripts.scripts_utility_functions import *
+from tests.data.js_scripts.scripts_element_interaction import *
 
 from tests.data.selectors.common_selectors import img_carousel_items, collapse_cards_active
 

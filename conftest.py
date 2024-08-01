@@ -1,13 +1,15 @@
 import pytest
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from pages.home_page import HomePage
+from pages.video_page import VideoPage
 from pages.login_page import LoginPage
 from pages.person_page import PersonPage
 from pages.recovery_page import RecoveryPage
 from pages.register_page import RegisterPage
-from pages.video_page import VideoPage
-from pages.home_page import HomePage
+
 from utils.browser_options import options_map
 from utils.client import load_config, get_chrome_options, URL, VIDEO, PERSON, LOGIN, RESET, REGISTER
 
@@ -34,6 +36,12 @@ def driver(request) -> webdriver.Chrome:
     driver.implicitly_wait(10)
     yield driver
     driver.quit()
+
+
+@pytest.fixture
+def testing_page(request: pytest.FixtureRequest) -> HomePage | VideoPage:
+    page_fixture = request.param
+    return request.getfixturevalue(page_fixture)
 
 
 @pytest.fixture

@@ -9,6 +9,7 @@ button_carousel_next = (By.XPATH, '//button[@class="carousel-control-next"]')
 
 # divs
 div_carousel = (By.XPATH, '//div[@id="carouselExampleIndicators"]')
+div_first_element_in_collapse_card = (By.XPATH, '(//*[@class="col d-flex align-items-start bon"])[1]')
 
 # imgs
 img_carousel_items = (By.XPATH, '//img[@class="img-circle"]')
@@ -44,13 +45,11 @@ link_telegram_bottom = (By.XPATH, '(//a[text()="t.me/okulikby"]')
 collapses_block = (By.XPATH, '//h2[contains (text(), "Программирование на Python")]/ancestor::div[4]')
 collapse_cards = (By.XPATH, '//a[@data-bs-toggle="collapse"]')
 collapse_cards_active = (By.XPATH, '//div[contains(@class, "collapse show")]')
-div_first_element_in_card = (By.XPATH, '(//*[@class="col d-flex align-items-start bon"])[1]')
 
-
-# collapse_automation_of_backend_testing = (By.XPATH, '//h2[contains (text(), "backend ")]/ancestor::a[1]')
-# collapse_automation_of_ui_testing = (By.XPATH, '//h2[contains (text(), "UI ")]/ancestor::a[1]')
-# collapse_tools = (By.XPATH, '//h2[contains (text(), "Инструменты")]/ancestor::a[1]')
-# collapse_final_block = (By.XPATH, '//h2[contains (text(), "Итоговый блок")]/ancestor::a[1]')
+collapse_automation_of_backend_testing = (By.XPATH, '//h2[contains (text(), "backend ")]/ancestor::a[1]')
+collapse_automation_of_ui_testing = (By.XPATH, '//h2[contains (text(), "UI ")]/ancestor::a[1]')
+collapse_tools = (By.XPATH, '//h2[contains (text(), "Инструменты")]/ancestor::a[1]')
+collapse_final_block = (By.XPATH, '//h2[contains (text(), "Итоговый блок")]/ancestor::a[1]')
 
 
 def button_carousel_page(page: int) -> (By, str):

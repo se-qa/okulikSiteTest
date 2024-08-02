@@ -1,7 +1,7 @@
 from utils.client import FULL_PRICE, PART_PRICE, VIDEO
 
 from tests.data.selectors.home_page_selectors import *
-from tests.data.selectors.common_selectors import link_about_me_youtube
+from tests.data.selectors.common_selectors import *
 from tests.data.selectors import part_price_page_selectors, full_price_page_selectors, video_page_selectors, \
     outdoor_page_selectors
 
@@ -51,3 +51,25 @@ class_pages_list_ids = [
     "home page",
     "video page"
 ]
+
+pages_and_common_selectors_list = [
+        ("home_page", button_open_chat, opened_chat),
+        ("home_page", link_copyright, button_sign_up_top),
+        ("home_page", link_payment_rules, div_payment_rules),
+        ("home_page", link_offer, title_offer),
+        ("video_page", button_open_chat, opened_chat),
+        ("video_page", link_copyright, button_sign_up_top),
+        ("video_page", link_payment_rules, div_payment_rules),
+        ("video_page", link_offer, title_offer),
+    ]
+
+pages_and_common_selectors_list_ids = [
+        "home page - open chat",
+        "home page - copyright",
+        "home page - payment rules",
+        "home page - offer",
+        "video page - open chat",
+        "video page - copyright",
+        "video page - payment rules",
+        "video page - offer"
+    ]

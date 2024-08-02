@@ -3,9 +3,10 @@ import pytest
 from utils.client import PRACTICAL_TASK
 
 from tests.data.selectors.common_selectors import *
-from tests.data.selectors.home_page_selectors import button_get_a_practical_task, button_sign_up_top
+from tests.data.selectors.home_page_selectors import button_get_a_practical_task
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
-from tests.data.tests_data.parametrize_home_page import class_pages_list_ids, class_pages_list
+from tests.data.tests_data.parametrize_home_page import class_pages_list_ids, class_pages_list, \
+    pages_and_common_selectors_list, pages_and_common_selectors_list_ids
 
 
 @pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
@@ -44,29 +45,9 @@ def test_all_carousel_pages_click(testing_page):
     testing_page.click_all_carousel_elements(buttons_carousel)
 
 
-@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
-def test_button_open_chat_click(testing_page):
-    testing_page.scroll_wait_click_element_by_locator(button_open_chat)
-    testing_page.wait_for_element_visible_by_locator(opened_chat)
-    assert testing_page.is_element_visible(opened_chat)
-
-
-@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
-def test_link_copyright_click(testing_page):
-    testing_page.scroll_wait_click_element_by_locator(link_copyright)
-    testing_page.wait_for_element_visible_by_locator(button_sign_up_top)
-    assert testing_page.is_element_visible(button_sign_up_top)
-
-
-@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
-def test_link_payment_rules_click(testing_page):
-    testing_page.scroll_wait_click_element_by_locator(link_payment_rules)
-    testing_page.wait_for_element_visible_by_locator(div_payment_rules)
-    assert testing_page.is_element_visible(div_payment_rules)
-
-
-@pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
-def test_link_offer_click(testing_page):
-    testing_page.scroll_wait_click_element_by_locator(link_offer)
-    testing_page.wait_for_element_visible_by_locator(title_offer)
-    assert testing_page.is_element_visible(title_offer)
+@pytest.mark.parametrize("testing_page, locator_to_click, locator_to_check", pages_and_common_selectors_list,
+                         ids=pages_and_common_selectors_list_ids, indirect=["testing_page"])
+def test_multiple_elements_click(testing_page, locator_to_click, locator_to_check):
+    testing_page.scroll_wait_click_element_by_locator(locator_to_click)
+    testing_page.wait_for_element_visible_by_locator(locator_to_check)
+    assert testing_page.is_element_visible(locator_to_check)

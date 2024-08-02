@@ -6,7 +6,7 @@ from tests.data.tests_data.parametrize_home_page import *
 
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
-from tests.data.selectors.common_selectors import collapse_cards, anchor_learning_process, title_learning_process
+from tests.data.selectors.common_selectors import collapse_cards
 
 
 def test_home_page_open(home_page):
@@ -44,8 +44,7 @@ def test_buy_course_links_click(home_page, link, target, url):
 
 @pytest.mark.parametrize("link, target, url", other_links_list, ids=other_links_list_ids)
 def test_other_links_click(home_page, link, target, url):
-    home_page.scroll_to_element(link)
-    home_page.click_element(link)
+    home_page.scroll_wait_click_element_by_locator(link)
     home_page.wait_for_element_visible_by_locator(target)
     assert home_page.is_current_url(url)
     assert home_page.is_element_visible(target)
@@ -58,9 +57,7 @@ def test_collapse_cards_click(home_page):
 
 
 def test_button_sign_up_right_group_click(home_page):
-    home_page.scroll_to_element(button_sign_up_right_group)
-    home_page.wait_for_scroll_to_element(button_sign_up_right_group)
-    home_page.click_element(button_sign_up_right_group)
+    home_page.scroll_wait_click_element_by_locator(button_sign_up_right_group)
     home_page.wait_for_scroll_to_element(title_booking)
     assert home_page.is_element_in_viewport(title_booking)
 
@@ -77,21 +74,15 @@ def test_switchers_click(home_page):
 
 
 def test_button_pay_first_step_click(home_page):
-    home_page.scroll_to_element(button_pay_first_step)
-    home_page.wait_for_scroll_to_element(button_pay_first_step)
-    home_page.click_element(button_pay_first_step)
+    home_page.scroll_wait_click_element_by_locator(button_pay_first_step)
     home_page.wait_for_element_visible_by_locator(title_part_price)
     assert home_page.is_current_url(PART_PRICE)
     assert home_page.is_element_in_viewport(title_part_price)
 
 
 def test_button_pay_entirely_click(home_page):
-    home_page.scroll_to_element(switcher_entire_amount)
-    home_page.wait_for_scroll_to_element(switcher_entire_amount)
-    home_page.click_element(switcher_entire_amount)
-    home_page.scroll_to_element(button_pay_entirely)
-    home_page.wait_for_scroll_to_element(button_pay_entirely)
-    home_page.click_element(button_pay_entirely)
+    home_page.scroll_wait_click_element_by_locator(switcher_entire_amount)
+    home_page.scroll_wait_click_element_by_locator(button_pay_entirely)
     home_page.wait_for_element_visible_by_locator(title_full_price)
     assert home_page.is_current_url(FULL_PRICE)
     assert home_page.is_element_in_viewport(title_full_price)

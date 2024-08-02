@@ -175,7 +175,6 @@ class BasePage:
         """Scroll to the element specified by the locator"""
         element = self.find_element(locator)
         js_scroll_to_element(self.driver, element)
-        self.wait_for_scroll_to_element(locator)
 
     def execute_script(self, script: str, *args) -> None:
         """Execute the specified JavaScript script"""
@@ -228,3 +227,26 @@ class BasePage:
             element.click()
             assert text in element.get_attribute("class"), f"Expected '{text}' to be in class after second click"
             self.wait_for_element_to_disappear(collapse_cards_active)
+
+    # Combined methods
+    def scroll_wait_click_element_by_locator(self, locator: tuple, locator2: tuple = None,
+                                             scroll_option: str = 'default') -> None:
+        """
+        Scroll, wait for visibility, and click on the element specified by the locator.
+
+        :param locator: The locator of the element to scroll to.
+        :param locator2: Optional locator of the element to click. If None, locator will be used.
+        :param scroll_option: Determines which scroll method to use.
+                              'default' - scrolls directly to the element,
+                              'top' - scrolls the element to the top of the screen,
+                              'center' - scrolls the element to the center of the screen.
+        """
+        if scroll_option == 'top':
+            self.scroll_to_element_top_of_screen(locator)
+        elif scroll_option == 'center':
+            self.scroll_to_element_center_of_screen(locator)
+        else:
+            self.scroll_to_element(locator)
+
+        self.wait_for_scroll_to_element(locator)
+        self.click_element(locator if locator2 is None else locator2)

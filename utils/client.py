@@ -51,3 +51,17 @@ def get_chrome_options(config: dict) -> Options:
         print(f"Added custom argument: {arg}")
 
     return options
+
+
+# def allure_annotations(title: str, story: str, description: str, tag: str,
+#                        severity: allure = allure.severity_level.NORMAL, feature: str = "MEME API") -> Any:
+#     def wrapper(func: Any) -> Any:
+#         func = allure.title(title)(func)
+#         func = allure.feature(feature)(func)
+#         func = allure.story(story)(func)
+#         func = allure.severity(severity)(func)
+#         func = allure.description(description)(func)
+#         func = allure.tag(tag)(func)
+#         return func
+#
+#     return wrapper

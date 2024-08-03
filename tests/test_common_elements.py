@@ -5,7 +5,7 @@ from utils.client import PRACTICAL_TASK
 from tests.data.selectors.common_selectors import *
 from tests.data.selectors.home_page_selectors import button_get_a_practical_task
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
-from tests.data.tests_data.parametrize_home_page import class_pages_list_ids, class_pages_list, \
+from tests.data.tests_data.parametrize_common import class_pages_list_ids, class_pages_list, \
     pages_and_common_elements_list, pages_and_common_elements_list_ids, pages_and_carousel_buttons_list, \
     pages_and_carousel_buttons_list_ids
 

@@ -7,7 +7,8 @@ from tests.data.selectors.home_page_selectors import button_sign_up_top
 from tests.data.selectors.outdoor_page_selectors import youtube_channel_title
 from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube
 
-from tests.data.tests_data.parametrize_home_page import buttons_video_course_dz_no_dz, buttons_video_course_dz_no_dz_ids
+from tests.data.tests_data.parametrize_video_page import buttons_video_course_dz_no_dz, \
+    buttons_video_course_dz_no_dz_ids
 
 
 def test_video_page_open(video_page):

@@ -1,7 +1,10 @@
-from utils.client import FULL_PRICE, PART_PRICE, VIDEO
+from utils.client import FULL_PRICE, PART_PRICE, VIDEO, VIDEO_DZ, VIDEO_NO_DZ
 
-from tests.data.selectors.home_page_selectors import *
 from tests.data.selectors.common_selectors import *
+from tests.data.selectors.home_page_selectors import *
+from tests.data.selectors.video_with_dz_page_selectors import title_access_to_video_dz_course
+from tests.data.selectors.video_without_dz_page_selectors import title_access_to_video_no_dz_course
+from tests.data.selectors.video_page_selectors import button_pay_access, button_pay_access_without_home_tasks
 from tests.data.selectors import part_price_page_selectors, full_price_page_selectors, video_page_selectors, \
     outdoor_page_selectors
 
@@ -12,7 +15,12 @@ anchors_top_list = [
     (anchor_booking, title_booking)
 ]
 
-anchors_top_list_ids = ["Course program", "Nearest course", "Price", "Booking"]
+anchors_top_list_ids = [
+    "Course program",
+    "Nearest course",
+    "Price",
+    "Booking"
+]
 
 buy_links_list = [
     (link_full_price, full_price_page_selectors.title_full_price, FULL_PRICE),
@@ -20,10 +28,11 @@ buy_links_list = [
     (link_video_price, video_page_selectors.paragraph_study_whenever_you_want, VIDEO)
 ]
 
-buy_links_list_ids = ["Full price",
-                      "Part price",
-                      "Video price"
-                      ]
+buy_links_list_ids = [
+    "Full price",
+    "Part price",
+    "Video price"
+]
 
 other_links_list = [
     (link_about_me_youtube, outdoor_page_selectors.youtube_channel_title, "https://www.youtube.com/@SeniorTester"),
@@ -34,13 +43,14 @@ other_links_list = [
     (link_telegram_step_by_step_radio, outdoor_page_selectors.telegram_channel_title, "https://t.me/okulikby")
 ]
 
-other_links_list_ids = ["Senior Tester",
-                        "video course",
-                        "Full price middle",
-                        "Part price middle",
-                        "Video price middle",
-                        "telegram"
-                        ]
+other_links_list_ids = [
+    "Senior Tester",
+    "video course",
+    "Full price middle",
+    "Part price middle",
+    "Video price middle",
+    "telegram"
+]
 
 class_pages_list = [
     "home_page",
@@ -86,4 +96,14 @@ pages_and_carousel_buttons_list_ids = [
     "home page - carousel next",
     "video page - carousel previous",
     "video page - carousel next"
+]
+
+buttons_video_course_dz_no_dz = [
+    (button_pay_access, title_access_to_video_dz_course, VIDEO_DZ),
+    (button_pay_access_without_home_tasks, title_access_to_video_no_dz_course, VIDEO_NO_DZ)
+]
+
+buttons_video_course_dz_no_dz_ids = [
+    "button pay access - dz course",
+    "button pay access without home tasks - no dz course"
 ]

@@ -4,9 +4,9 @@ from utils.client import URL
 
 from tests.data.tests_data.parametrize_home_page import *
 
+from tests.data.selectors.common_selectors import collapse_cards
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
-from tests.data.selectors.common_selectors import collapse_cards
 
 
 def test_home_page_open(home_page):

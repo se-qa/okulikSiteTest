@@ -6,7 +6,7 @@ from utils.client import VIDEO, URL, allure_annotations
 from tests.data.selectors.video_page_selectors import *
 from tests.data.selectors.home_page_selectors import button_sign_up_top
 from tests.data.selectors.outdoor_page_selectors import youtube_channel_title
-from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube
+from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube, collapse_cards_active
 
 from tests.data.tests_data.parametrize_video_page import buttons_video_course_dz_no_dz, \
     buttons_video_course_dz_no_dz_ids
@@ -71,7 +71,7 @@ def test_link_join_a_group_click(video_page):
 def test_collapse_cards_click(video_page):
     video_page.scroll_to_element_top_of_screen(collapse_cards)
     video_page.wait_for_scroll_to_element(collapse_cards)
-    video_page.click_all_collapse_elements(collapse_cards, "collapsed")
+    video_page.click_all_collapse_elements(collapse_cards, collapse_cards_active, "collapsed")
 
 
 @allure_annotations(

@@ -99,7 +99,7 @@ def test_other_links_click(home_page, link, target, url):
 def test_collapse_cards_click(home_page):
     home_page.scroll_to_element_top_of_screen(collapse_cards)
     home_page.wait_for_scroll_to_element(collapse_cards)
-    home_page.click_all_collapse_elements(collapse_cards, "collapsed")
+    home_page.click_all_collapse_elements(collapse_cards, collapse_cards_active, "collapsed")
 
 
 @allure_annotations(

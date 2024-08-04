@@ -206,9 +206,14 @@ class BasePage:
         """Switch to the newly opened tab"""
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
-    def click_all_carousel_elements(self, locator: tuple) -> None:
+    def click_all_carousel_elements(self, locator: tuple, img_locator: tuple) -> None:
+        """
+        Click all carousel elements and verify that the elements are displayed
+        :param locator: Locator of the elements to click
+        :param img_locator: Locator of the elements to wait for visibility after click
+        """
         elements = self.find_elements(locator)
-        target = self.find_elements(img_carousel_items)
+        target = self.find_elements(img_locator)
         assert self.is_length_of_elements(elements, len(target)), (f"Expected {len(elements)} elements, "
                                                                    + f"but found {len(target)} elements")
 
@@ -217,16 +222,22 @@ class BasePage:
             self.wait_for_element_visible_by_element(target[index])
             assert target[index].is_displayed(), f"Element at index {index} is not displayed after clicking"
 
-    def click_all_collapse_elements(self, locator: tuple, text: str) -> None:
+    def click_all_collapse_elements(self, locator: tuple, locator2: tuple[str:str], text: str) -> None:
+        """
+        Click all collapse elements and verify that the specified text is in the class attribute of the element
+        :param locator: Locator of the elements to click
+        :param locator2: Locator of the elements to wait for visibility after click
+        :param text: Text to check in the class attribute
+        """
         elements = self.find_elements(locator)
 
         for element in elements:
             element.click()
             assert text not in element.get_attribute("class"), f"Expected '{text}' to not be in class after first click"
-            self.wait_for_element_visible_by_locator(collapse_cards_active)
+            self.wait_for_element_visible_by_locator(locator2)
             element.click()
             assert text in element.get_attribute("class"), f"Expected '{text}' to be in class after second click"
-            self.wait_for_element_to_disappear(collapse_cards_active)
+            self.wait_for_element_to_disappear(locator2)
 
     # Combined methods
     def scroll_wait_click_element_by_locator(self, locator: tuple, locator2: tuple = None,

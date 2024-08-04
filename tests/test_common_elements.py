@@ -63,7 +63,7 @@ def test_carousel_button_click(testing_page, button_to_click, img_to_check):
 def test_all_carousel_pages_click(testing_page):
     testing_page.scroll_to_element_top_of_screen(div_carousel)
     testing_page.wait_for_scroll_to_element(div_carousel)
-    testing_page.click_all_carousel_elements(buttons_carousel)
+    testing_page.click_all_carousel_elements(buttons_carousel, img_carousel_items)
 
 
 @allure_annotations(

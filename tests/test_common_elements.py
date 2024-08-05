@@ -20,8 +20,8 @@ from tests.data.tests_data.parametrize_common import class_pages_list_ids, class
 @pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
 def test_anchor_learning_process_click(testing_page):
     testing_page.scroll_wait_click_element_by_locator(anchor_learning_process)
-    testing_page.wait_for_scroll_to_element(title_learning_process)
-    assert testing_page.is_element_in_viewport(title_learning_process)
+    testing_page.waiting_conditions.wait_for_scroll_to_element(title_learning_process)
+    assert testing_page.element_state_checking.is_element_in_viewport(title_learning_process)
 
 
 @allure_annotations(
@@ -34,9 +34,9 @@ def test_anchor_learning_process_click(testing_page):
 @pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
 def test_button_get_practical_task_click(testing_page):
     testing_page.scroll_wait_click_element_by_locator(button_get_a_practical_task)
-    testing_page.wait_for_element_visible_by_locator(title_practical_task)
-    assert testing_page.is_current_url(PRACTICAL_TASK)
-    assert testing_page.is_element_in_viewport(title_practical_task)
+    testing_page.waiting_conditions.wait_for_element_visible_by_locator(title_practical_task)
+    assert testing_page.element_state_checking.is_current_url(PRACTICAL_TASK)
+    assert testing_page.element_state_checking.is_element_in_viewport(title_practical_task)
 
 
 @allure_annotations(
@@ -49,8 +49,8 @@ def test_button_get_practical_task_click(testing_page):
                          ids=pages_and_carousel_buttons_list_ids, indirect=["testing_page"])
 def test_carousel_button_click(testing_page, button_to_click, img_to_check):
     testing_page.scroll_wait_click_element_by_locator(div_carousel, button_to_click, scroll_option='top')
-    testing_page.wait_for_element_visible_by_locator(img_to_check)
-    assert testing_page.is_element_in_viewport(img_to_check)
+    testing_page.waiting_conditions.wait_for_element_visible_by_locator(img_to_check)
+    assert testing_page.element_state_checking.is_element_in_viewport(img_to_check)
 
 
 @allure_annotations(
@@ -61,8 +61,8 @@ def test_carousel_button_click(testing_page, button_to_click, img_to_check):
 )
 @pytest.mark.parametrize("testing_page", class_pages_list, ids=class_pages_list_ids, indirect=True)
 def test_all_carousel_pages_click(testing_page):
-    testing_page.scroll_to_element_top_of_screen(div_carousel)
-    testing_page.wait_for_scroll_to_element(div_carousel)
+    testing_page.utility_functions.scroll_to_element_top_of_screen(div_carousel)
+    testing_page.waiting_conditions.wait_for_scroll_to_element(div_carousel)
     testing_page.click_all_carousel_elements(buttons_carousel, img_carousel_items)
 
 
@@ -77,5 +77,5 @@ def test_all_carousel_pages_click(testing_page):
                          ids=pages_and_common_elements_list_ids, indirect=["testing_page"])
 def test_multiple_elements_click(testing_page, locator_to_click, locator_to_check):
     testing_page.scroll_wait_click_element_by_locator(locator_to_click)
-    testing_page.wait_for_element_visible_by_locator(locator_to_check)
-    assert testing_page.is_element_visible(locator_to_check)
+    testing_page.waiting_conditions.wait_for_element_visible_by_locator(locator_to_check)
+    assert testing_page.element_state_checking.is_element_visible(locator_to_check)

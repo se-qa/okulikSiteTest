@@ -3,17 +3,22 @@ import pytest
 
 from utils.client import PRACTICAL_TASK, allure_annotations
 
-from tests.data.selectors.common_selectors import *
 from tests.data.selectors.home_page_selectors import button_get_a_practical_task
+
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
+
+from tests.data.selectors.common_selectors import anchor_learning_process, title_learning_process, div_carousel, \
+    buttons_carousel, img_carousel_items
+
 from tests.data.tests_data.parametrize_common import class_pages_list_ids, class_pages_list, \
     pages_and_common_elements_list, pages_and_common_elements_list_ids, pages_and_carousel_buttons_list, \
     pages_and_carousel_buttons_list_ids
 
 
 @allure_annotations(
-    title="Common Page Elements",
-    story="Anchor learning process click",
+    title="Anchor learning process click",
+    feature="Common elements",
+    story="Clicking an anchor",
     description='This test checks if the common anchors are clickable and redirects to the correct targets',
     tag='Positive'
 )
@@ -25,8 +30,9 @@ def test_anchor_learning_process_click(testing_page):
 
 
 @allure_annotations(
-    title="Common Page Elements",
-    story="Button get practical task click",
+    title="Button get practical task click",
+    feature="Common elements",
+    story="Clicking a button",
     description='This test checks if the "get practical task" button is clickable and redirects to the "practice" page',
     tag='Positive',
     severity=allure.severity_level.CRITICAL
@@ -40,8 +46,9 @@ def test_button_get_practical_task_click(testing_page):
 
 
 @allure_annotations(
-    title="Common Page Elements",
-    story="Carousel buttons click",
+    title="Carousel buttons click",
+    feature="Common elements",
+    story="Clicking a button",
     description='This test checks if the carousel previous and next buttons are clickable and toggles their visibility',
     tag='Positive'
 )
@@ -54,8 +61,9 @@ def test_carousel_button_click(testing_page, button_to_click, img_to_check):
 
 
 @allure_annotations(
-    title="Common Page Elements",
-    story="Carousel elements click",
+    title="Carousel elements click",
+    feature="Common elements",
+    story="Clicking an element",
     description='This test checks if the carousel elements are clickable and toggles their visibility',
     tag='Positive'
 )
@@ -67,8 +75,9 @@ def test_all_carousel_pages_click(testing_page):
 
 
 @allure_annotations(
-    title="Common Page Elements",
-    story="Multiple elements click",
+    title="Multiple elements click",
+    feature="Common elements",
+    story="Clicking an element",
     description='This test checks if the common button "open chat" and links are clickable and redirects to the '
                 + 'correct pages',
     tag='Positive'

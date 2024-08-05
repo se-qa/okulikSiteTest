@@ -56,7 +56,7 @@ def get_chrome_options(config: dict) -> Options:
 
 
 def allure_annotations(title: str, story: str, description: str, tag: str,
-                       severity: allure = allure.severity_level.NORMAL, feature: str = "okulik.by") -> Any:
+                       severity: allure = allure.severity_level.NORMAL, feature: str = None) -> Any:
     def wrapper(func: Any) -> Any:
         func = allure.title(title)(func)
         func = allure.feature(feature)(func)

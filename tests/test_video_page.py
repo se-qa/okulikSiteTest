@@ -3,18 +3,23 @@ import pytest
 
 from utils.client import VIDEO, URL, allure_annotations
 
-from tests.data.selectors.video_page_selectors import *
 from tests.data.selectors.home_page_selectors import button_sign_up_top
+
 from tests.data.selectors.outdoor_page_selectors import youtube_channel_title
-from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube, collapse_cards_active
 
 from tests.data.tests_data.parametrize_video_page import buttons_video_course_dz_no_dz, \
     buttons_video_course_dz_no_dz_ids
 
+from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube, collapse_cards_active
+
+from tests.data.selectors.video_page_selectors import paragraph_study_whenever_you_want, button_get_access, \
+    title_price, link_join_a_group
+
 
 @allure_annotations(
-    title="Video Page",
-    story="Open video page",
+    title="Open video page",
+    feature="Video Page",
+    story="Page open",
     description='This test checks if the video page is open correctly',
     tag='Positive',
     severity=allure.severity_level.BLOCKER
@@ -26,8 +31,9 @@ def test_video_page_open(video_page):
 
 
 @allure_annotations(
-    title="Video Page",
-    story="Get access button click",
+    title="Get access button click",
+    feature="Video Page",
+    story="Click a button",
     description='This test checks if the "get access" button is clickable and redirects to the correct target on page',
     tag='Positive'
 )
@@ -38,8 +44,9 @@ def test_button_get_access_click(video_page):
 
 
 @allure_annotations(
-    title="Video Page",
-    story="About me youtube button click",
+    title="About me youtube link click",
+    feature="Video Page",
+    story="Click a link",
     description='This test checks if the "about me youtube" button is clickable and redirects to the "YouTube" page',
     tag='Positive'
 )
@@ -50,8 +57,9 @@ def test_link_about_me_youtube_click(video_page):
 
 
 @allure_annotations(
-    title="Video Page",
-    story="Join a group button click",
+    title="Join a group link click",
+    feature="Video Page",
+    story="Click a link",
     description='This test checks if the "join a group" link is clickable and redirects to the home page',
     tag='Positive'
 )
@@ -63,8 +71,9 @@ def test_link_join_a_group_click(video_page):
 
 
 @allure_annotations(
-    title="Video Page",
-    story="Collapse cards click",
+    title="Collapse cards click",
+    feature="Video Page",
+    story="Click an element",
     description='This test checks if the collapse cards are clickable and toggles their visibility',
     tag='Positive'
 )
@@ -75,8 +84,9 @@ def test_collapse_cards_click(video_page):
 
 
 @allure_annotations(
-    title="Video Page",
-    story="Buttons pay access click",
+    title="Buttons pay access click",
+    feature="Video Page",
+    story="Click a button",
     description='This test checks if the "get access" buttons is clickable and redirects to the correct pages',
     tag='Positive',
     severity=allure.severity_level.CRITICAL

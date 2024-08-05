@@ -1,18 +1,27 @@
 import allure
 import pytest
 
-from utils.client import URL, allure_annotations
+from tests.data.selectors.register_page_selectors import input_email
 
-from tests.data.tests_data.parametrize_home_page import *
+from utils.client import URL, allure_annotations, PART_PRICE, FULL_PRICE
 
-from tests.data.selectors.common_selectors import collapse_cards
+from tests.data.selectors.common_selectors import collapse_cards, collapse_cards_active
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
 
+from tests.data.tests_data.parametrize_home_page import anchors_top_list, anchors_top_list_ids, buy_links_list_ids, \
+    buy_links_list, other_links_list_ids, other_links_list
+
+from tests.data.selectors.home_page_selectors import link_logo, button_sign_up_top, title_booking, \
+    button_sign_up_right_group, switcher_stages, title_staged_payment, switcher_entire_amount, \
+    title_payment_whole_course, button_pay_first_step, button_pay_entirely, input_full_name, input_contact, \
+    input_comment, button_sign_up, paragraph_successful_alert
+
 
 @allure_annotations(
-    title="Home Page",
-    story="Open home page",
+    title="Open home page",
+    feature="Home Page",
+    story="Page open",
     description='This test checks if the home page is open with the correct URL and logo',
     tag='Positive',
     severity=allure.severity_level.BLOCKER
@@ -25,8 +34,9 @@ def test_home_page_open(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Logo click",
+    title="Logo click",
+    feature="Home Page",
+    story="Click an element",
     description='This test checks if the logo is clickable and redirects to the main page',
     tag='Positive'
 )
@@ -37,8 +47,9 @@ def test_logo_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Sign up click",
+    title="Sign up click",
+    feature="Home Page",
+    story="Click a button",
     description='This test checks if the sign up button is clickable and redirects to the booking form',
     tag='Positive'
 )
@@ -49,8 +60,9 @@ def test_button_sign_up_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Anchor click",
+    title="Top anchor click",
+    feature="Home Page",
+    story="Click an anchor",
     description='This test checks if the anchors are clickable and redirects to the correct targets',
     tag='Positive'
 )
@@ -62,8 +74,9 @@ def test_top_anchor_click(home_page, anchor, target):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Buy course links click",
+    title="Buy course links click",
+    feature="Home Page",
+    story="Click a link",
     description='This test checks if the buy course links are clickable and redirects to the correct pages',
     tag='Positive',
     severity=allure.severity_level.CRITICAL
@@ -77,8 +90,9 @@ def test_buy_course_links_click(home_page, link, target, url):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Other links click",
+    title="Other links click",
+    feature="Home Page",
+    story="Click a link",
     description='This test checks if the other links on the home page are clickable and redirects to the correct pages',
     tag='Positive'
 )
@@ -91,8 +105,9 @@ def test_other_links_click(home_page, link, target, url):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Collapse cards click",
+    title="Collapse cards click",
+    feature="Home Page",
+    story="Click an element",
     description='This test checks if the collapse cards are clickable and toggles their visibility',
     tag='Positive'
 )
@@ -103,8 +118,9 @@ def test_collapse_cards_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Button sign up right group click",
+    title="Button sign up right group click",
+    feature="Home Page",
+    story="Click a button",
     description='This test checks if the subscribe button for the right group is clickable and redirects to the '
                 + 'booking form',
     tag='Positive'
@@ -116,8 +132,9 @@ def test_button_sign_up_right_group_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Switchers click",
+    title="Switchers click",
+    feature="Home Page",
+    story="Click an element",
     description='This test checks if the toggles are clickable and verifies that the appropriate content is displayed '
                 + 'for each state',
     tag='Positive'
@@ -134,8 +151,9 @@ def test_switchers_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Pay buttons click",
+    title="Pay buttons click",
+    feature="Home Page",
+    story="Click a button",
     description='This test checks if the pay button are clickable and redirects to the part price page',
     tag='Positive',
     severity=allure.severity_level.CRITICAL
@@ -148,8 +166,9 @@ def test_button_pay_first_step_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Pay buttons click",
+    title="Pay buttons click",
+    feature="Home Page",
+    story="Click a button",
     description='This test checks if the pay button are clickable and redirects to the full price page',
     tag='Positive',
     severity=allure.severity_level.CRITICAL
@@ -163,8 +182,9 @@ def test_button_pay_entirely_click(home_page):
 
 
 @allure_annotations(
-    title="Home Page",
-    story="Booking form submit",
+    title="Booking form submit",
+    feature="Home Page",
+    story="Submit a form",
     description='This test verifies a positive script for filling out and submitting the booking form, as well as '
                 + 'displaying a successful booking after submitting the form and having the submitter\'s name in the '
                 + 'booking confirmation text',

@@ -18,10 +18,6 @@ class BasePage:
         self.waiting_conditions = WaitingConditions(driver, self.element_state_checking)
         self.utility_functions = UtilityFunctions(driver, self.element_interaction)
 
-    def switch_to_new_tab(self) -> None:
-        """Switch to the newly opened tab"""
-        self.driver.switch_to.window(self.driver.window_handles[-1])
-
     def click_all_carousel_elements(self, locator: tuple, img_locator: tuple) -> None:
         """
         Click all carousel elements and verify that the elements are displayed

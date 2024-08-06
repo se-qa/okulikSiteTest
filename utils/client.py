@@ -2,9 +2,8 @@ import os
 import json
 import allure
 
-from pathlib import Path
 from typing import Any
-
+from pathlib import Path
 from dotenv import load_dotenv
 
 from utils.browser_options import argument_mappings

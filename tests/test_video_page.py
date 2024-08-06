@@ -4,16 +4,13 @@ import pytest
 from utils.client import VIDEO, URL, allure_annotations
 
 from tests.data.selectors.home_page_selectors import button_sign_up_top
-
 from tests.data.selectors.outdoor_page_selectors import youtube_channel_title
+from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube, collapse_cards_active
+from tests.data.selectors.video_page_selectors import paragraph_study_whenever_you_want, button_get_access, \
+    title_price, link_join_a_group
 
 from tests.data.tests_data.parametrize_video_page import buttons_video_course_dz_no_dz, \
     buttons_video_course_dz_no_dz_ids
-
-from tests.data.selectors.common_selectors import collapse_cards, link_about_me_youtube, collapse_cards_active
-
-from tests.data.selectors.video_page_selectors import paragraph_study_whenever_you_want, button_get_access, \
-    title_price, link_join_a_group
 
 
 @allure_annotations(

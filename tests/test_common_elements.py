@@ -4,9 +4,7 @@ import pytest
 from utils.client import PRACTICAL_TASK, allure_annotations
 
 from tests.data.selectors.home_page_selectors import button_get_a_practical_task
-
 from tests.data.selectors.practical_task_page_selectors import title_practical_task
-
 from tests.data.selectors.common_selectors import anchor_learning_process, title_learning_process, div_carousel, \
     buttons_carousel, img_carousel_items
 

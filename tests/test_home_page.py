@@ -1,21 +1,19 @@
 import allure
 import pytest
 
-from tests.data.selectors.register_page_selectors import input_email
-
 from utils.client import URL, allure_annotations, PART_PRICE, FULL_PRICE
 
-from tests.data.selectors.common_selectors import collapse_cards, collapse_cards_active
+from tests.data.selectors.register_page_selectors import input_email
 from tests.data.selectors.full_price_page_selectors import title_full_price
 from tests.data.selectors.part_price_page_selectors import title_part_price
-
-from tests.data.tests_data.parametrize_home_page import anchors_top_list, anchors_top_list_ids, buy_links_list_ids, \
-    buy_links_list, other_links_list_ids, other_links_list
-
+from tests.data.selectors.common_selectors import collapse_cards, collapse_cards_active
 from tests.data.selectors.home_page_selectors import link_logo, button_sign_up_top, title_booking, \
     button_sign_up_right_group, switcher_stages, title_staged_payment, switcher_entire_amount, \
     title_payment_whole_course, button_pay_first_step, button_pay_entirely, input_full_name, input_contact, \
     input_comment, button_sign_up, paragraph_successful_alert
+
+from tests.data.tests_data.parametrize_home_page import anchors_top_list, anchors_top_list_ids, buy_links_list_ids, \
+    buy_links_list, other_links_list_ids, other_links_list
 
 
 @allure_annotations(

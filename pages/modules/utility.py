@@ -3,6 +3,7 @@ from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.support.select import Select
 
 from pages.modules.interaction import ElementInteraction
+
 from tests.data.js_scripts.scripts_element_interaction import js_scroll_to_element
 from tests.data.js_scripts.scripts_page_interaction import js_scroll_element_to_center_of_screen, \
     js_scroll_element_to_top_of_screen

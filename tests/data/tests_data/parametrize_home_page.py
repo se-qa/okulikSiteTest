@@ -1,10 +1,8 @@
 from utils.client import FULL_PRICE, PART_PRICE, VIDEO
 
 from tests.data.selectors.common_selectors import link_about_me_youtube
-
 from tests.data.selectors import part_price_page_selectors, full_price_page_selectors, video_page_selectors, \
     outdoor_page_selectors
-
 from tests.data.selectors.home_page_selectors import anchor_course_program, title_course_program, title_start_group, \
     anchor_nearest_course, title_price, anchor_price, anchor_booking, title_booking, link_full_price, link_part_price, \
     link_video_price, link_video_course, link_full_price_middle, link_part_price_middle, link_video_price_middle, \

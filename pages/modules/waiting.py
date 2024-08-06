@@ -27,6 +27,11 @@ class WaitingConditions:
         """Wait for an element specified by the locator to disappear"""
         WebDriverWait(self.driver, timeout).until(ec.invisibility_of_element_located(locator))
 
+    def wait_for_text_present_in_attribute(self, locator: tuple[str, str], attribute: str, text: str,
+                                           timeout: int = 10) -> None:
+        """Wait for an element specified by the locator to disappear"""
+        WebDriverWait(self.driver, timeout).until(ec.text_to_be_present_in_element_attribute(locator, attribute, text))
+
     def wait_and_click(self, locator: tuple[str, str], timeout: int = 10) -> None:
         """Wait for an element specified by the locator to be clickable and click it"""
         element = self.wait_for_element_clickable(locator, timeout)

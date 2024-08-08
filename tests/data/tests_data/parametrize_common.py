@@ -1,7 +1,5 @@
-from tests.data.selectors.home_page_selectors import button_sign_up_top
-from tests.data.selectors.common_selectors import button_open_chat, link_copyright, link_payment_rules, link_offer, \
-    title_offer, opened_chat, div_payment_rules, button_carousel_previous, img_carousel_item_2, img_carousel_item_7, \
-    button_carousel_next
+from tests.data.locators.home_page_locators import HomePageLocators as locHP
+from tests.data.locators.common_locators import CommonLocators as locCom
 
 class_pages_list = [
     "home_page",
@@ -14,14 +12,14 @@ class_pages_list_ids = [
 ]
 
 pages_and_common_elements_list = [
-    ("home_page", button_open_chat, opened_chat),
-    ("home_page", link_copyright, button_sign_up_top),
-    ("home_page", link_payment_rules, div_payment_rules),
-    ("home_page", link_offer, title_offer),
-    ("video_page", button_open_chat, opened_chat),
-    ("video_page", link_copyright, button_sign_up_top),
-    ("video_page", link_payment_rules, div_payment_rules),
-    ("video_page", link_offer, title_offer),
+    ("home_page", locCom.button_open_chat, locCom.opened_chat),
+    ("home_page", locCom.link_copyright, locHP.button_sign_up_top),
+    ("home_page", locCom.link_payment_rules, locCom.div_payment_rules),
+    ("home_page", locCom.link_offer, locCom.title_offer),
+    ("video_page", locCom.button_open_chat, locCom.opened_chat),
+    ("video_page", locCom.link_copyright, locHP.button_sign_up_top),
+    ("video_page", locCom.link_payment_rules, locCom.div_payment_rules),
+    ("video_page", locCom.link_offer, locCom.title_offer),
 ]
 
 pages_and_common_elements_list_ids = [
@@ -36,10 +34,10 @@ pages_and_common_elements_list_ids = [
 ]
 
 pages_and_carousel_buttons_list = [
-    ("home_page", button_carousel_previous, img_carousel_item_7),
-    ("home_page", button_carousel_next, img_carousel_item_2),
-    ("video_page", button_carousel_previous, img_carousel_item_7),
-    ("video_page", button_carousel_next, img_carousel_item_2)
+    ("home_page", locCom.button_carousel_previous, locCom.img_carousel_item_7),
+    ("home_page", locCom.button_carousel_next, locCom.img_carousel_item_2),
+    ("video_page", locCom.button_carousel_previous, locCom.img_carousel_item_7),
+    ("video_page", locCom.button_carousel_next, locCom.img_carousel_item_2)
 ]
 
 pages_and_carousel_buttons_list_ids = [

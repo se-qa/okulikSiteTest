@@ -2,6 +2,7 @@ import pytest
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.webdriver import WebDriver
 
 from pages.home_page import HomePage
 from pages.video_page import VideoPage
@@ -23,7 +24,7 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def driver(request) -> webdriver.Chrome:
+def driver(request: pytest.FixtureRequest) -> WebDriver:
     config: dict = load_config()
     options: Options = get_chrome_options(config["chrome_options"])
 
@@ -45,36 +46,36 @@ def testing_page(request: pytest.FixtureRequest) -> HomePage | VideoPage:
 
 
 @pytest.fixture
-def home_page(driver: webdriver) -> HomePage:
+def home_page(driver: WebDriver) -> HomePage:
     driver.get(URL)
     return HomePage(driver)
 
 
 @pytest.fixture
-def video_page(driver: webdriver) -> VideoPage:
+def video_page(driver: WebDriver) -> VideoPage:
     driver.get(VIDEO)
     return VideoPage(driver)
 
 
 @pytest.fixture
-def person_page(driver: webdriver) -> PersonPage:
+def person_page(driver: WebDriver) -> PersonPage:
     driver.get(PERSON)
     return PersonPage(driver)
 
 
 @pytest.fixture
-def login_page(driver: webdriver) -> LoginPage:
+def login_page(driver: WebDriver) -> LoginPage:
     driver.get(LOGIN)
     return LoginPage(driver)
 
 
 @pytest.fixture
-def recovery_page(driver: webdriver) -> RecoveryPage:
+def recovery_page(driver: WebDriver) -> RecoveryPage:
     driver.get(RESET)
     return RecoveryPage(driver)
 
 
 @pytest.fixture
-def register_page(driver: webdriver) -> RegisterPage:
+def register_page(driver: WebDriver) -> RegisterPage:
     driver.get(REGISTER)
     return RegisterPage(driver)
